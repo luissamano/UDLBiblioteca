@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!--Iconics-->
+        <link href="Resources/" />
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+
+        <!-- Material Disign-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-red.min.css" />
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+        <title>Servicios Biblioteca</title>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"  >
+            <i class="material-icons">&#xE88A;</i>
+            <a class="navbar-brand" href="#">Servicios Biblioteca UDL</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/Sala.html">Sala AudioVisual<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Otras opciones
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="http://www.universidaddeleon.edu.mx/">Pagina de la universidad</a>
+                            <a class="dropdown-item" href="http://www.universidaddeleon.edu.mx/spanish/servicios/calificaciones/">Calificaciones</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="http://mail.universidaddeleon.edu.mx/src/login.php">Correo</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <br>
+        <div class="container jumbotron p-3 p-md-5 text-Black rounded  bg-light">
+            <form >
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <i class="material-icons">&#xE8F8;</i>
+                        <label for="inputProfesor" class="text-primary font-weight-bold">Nombre del profesor</label>
+                        <input type="text" class="form-control" id="inputProfesor" >
+                    </div>
+                    <div class="form-group col-md-4">
+                        <i class="material-icons">&#xE87C;</i>
+                        <label id="lbl" for="inputAlumno" class="text-primary font-weight-bold">Nombre del Alumno</label>
+                        <input type="text" class="form-control" id="inputAlumno" >
+                    </div>
+                    <div class="form-group col-md-2">
+                        <i class="material-icons">&#xE90D;</i>
+                        <label for="inputAlumno" class="text-primary font-weight-bold">Matricula</label>
+                        <input type="text" class="form-control" id="inputMatricula" >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <i class="material-icons">&#xE7EE;</i>
+                        <label for="inputPlantel" class="text-primary font-weight-bold">Plantel</label>
+                        <select id="inputPlantel" class="form-control">
+                            <option selected>Selecciona...</option>
+                            <option>Juarez</option>
+                            <option>Paraisos</option>
+                            <option>Reforma</option>
+                            <option>Torres Landa</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <i class="material-icons">&#xE80C;</i>
+                        <label for="inputCarrera"class="text-primary font-weight-bold">Carrera</label>
+                        <select id="inputCarrera" class="form-control">
+                            <option selected>Selecciona...</option>
+                            <option>Administración de empresas</option>
+                            <option>Arquitetura</option>
+                            <option>Artes escenicas</option>
+                            <option>Artes plasticas</option>
+                            <option>Comercio internacional</option>
+                            <option>Comunicación</option>
+                            <option>Contaduria publica</option>
+                            <option>Derecho</option>
+                            <option>Desarrollo de negocios</option>
+                            <option>Diseño grafico</option>
+                            <option>Diseño de moda</option>
+                            <option>Finanzas</option>
+                            <option>Gastronomia</option>
+                            <option>Informatica administrativa</option>
+                            <option>Ingeneria civil</option>
+                            <option>Ingeneria en computación</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <i class="material-icons">&#xE7EF;</i>                   
+                        <label for="inputGrupo" class="text-primary font-weight-bold">Grupo</label>
+                        <input type="text" class="form-control" id="inputGrupo" >
+                    </div>
+                    <div class="form-group col-md-2">
+                        <i class="material-icons">&#xE886;</i>
+                        <label for="inputSalon" class="text-primary font-weight-bold">Salon</label>
+                        <input type="text" class="form-control" id="inputSalon" >
+                    </div>
+                </div>
+
+
+                <div class="form-row card-deck mb-3 text-center">
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--1dp col-md-4 card mb-4 box-shadow">
+                        <thead>                            
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric text-primary font-weight-bold">Exposición</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Televisor (LCD)</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Cañon</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">HDMI</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Extension</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp col-md-4 card mb-4 box-shadow">
+                        <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric text-primary font-weight-bold">Equipo electronico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">DVD</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Grabadora</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Televisor clasi</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">VHS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp col-md-4 card mb-4 box-shadow">
+                        <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric text-primary font-weight-bold">Otros</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Amplificador</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Computadora</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Microfono</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">rotafolio</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <br>       
+                <button type="submit" class="btn-outline-primary btn-lg btn-block col-md-4">Enviar</button>
+            </form>
+        </div>
+
+
+        <footer class="mdl-mini-footer bg-light">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo text-dark">@SamanoCedillo</div>
+                <ul class="mdl-mini-footer__link-list">                    
+                    <li><a href="https://github.com/samanocedillo/">GitHub</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+</html>
