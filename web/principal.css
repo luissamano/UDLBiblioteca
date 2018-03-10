@@ -1,0 +1,15 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9/03/2018, 08:44:29 AM
+    Author     : marti
+*/
+
+body
+{
+    background-image: url("wallpaper.png");
+    background-attachment: fixed; /* El fondo permanecerá fijo */
+}
