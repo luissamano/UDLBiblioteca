@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class Equipo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private String a, b, c, d, e, f, g, h, i, j;
+    private int canon, ext, hdmi, lcd, dvd, grab, tv, vhs;
     private Connection conn;
     String user = "root";
     String password = "";
@@ -76,8 +78,117 @@ public class Equipo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        // JDBC driver name and database URL
+    String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    String DB_URL = "jdbc:mysql://localhost:3306/biblioteca";
+
+    //  Database credentials
+    String USER = "root";
+    String PASS = "";
+
+    // Set response content type
+    response.setContentType (
+    "text/html");
+      PrintWriter out = response.getWriter();
+    String title = "Database Result";
+
+    String docType
+            = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
+
+    out.println (docType 
+
+    
+        +
+         "<html>\n" +
+         "<head><title>" + title + "</title></head>\n" +
+         "<body bgcolor = \"#f0f0f0\">\n" +
+         "<h1 align = \"center\">" + title + "</h1>\n");
+      try {
+         // Register JDBC driver
+         Class.forName("com.mysql.jdbc.Driver");
+
+        // Open a connection
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        // Execute SQL query
+        Statement stmt = conn.createStatement();
+        String sql;
+        sql = "SELECT * FROM biblioteca.pedidos";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        // Extract data from result set
+        while (rs.next()) {
+            //Retrieve by column name
+            int id = rs.getInt("Id");
+            String NombreProfesor = rs.getString("NombreProfesor");
+            String NombreAlumnos = rs.getString("NombreAlumnos");
+            int Matricula = rs.getInt("Matricula");
+            String Plantel = rs.getString("Plantel");
+            String Carrera = rs.getString("Carrera");
+            String Grupo = rs.getString("Grupo");
+            int Salon = rs.getInt("Salon");
+            int Canon = rs.getInt("Canon");
+            int Extencion = rs.getInt("Extencion");
+            int Hdmi = rs.getInt("Hdmi");
+            int Lcd = rs.getInt("Lcd");
+            int Grabadora = rs.getInt("Grabadora");
+            int Tv = rs.getInt("Tv");
+            int Vhs = rs.getInt("Vhs");
+            int Dvd = rs.getInt("Dvs");
+
+            //Display values
+            out.println("ID: " + id + "<br>");
+            out.println(",Nombre Profesor: " + NombreProfesor + "<br>");
+            out.println(",Nombre Alumnos: " + NombreAlumnos + "<br>");
+            out.println(",Matricula: " + Matricula + "<br>");            
+            out.println(",Plantel: " + Plantel + "<br>");
+            out.println(",Carrera: " + Carrera + "<br>");
+            out.println(",Grupo: " + Grupo + "<br>");
+            out.println(",Salon: " + Salon + "<br>");
+            out.println(",Canon: " + Canon + "<br>");
+            out.println(",Extencion: " + Extencion + "<br>");
+            out.println(",Hdmi: " + Hdmi + "<br>");
+            out.println(",Lcd: " + Lcd + "<br>");            
+            out.println(",Grabadora: " + Grabadora + "<br>");
+            out.println(",Tv: " + Tv + "<br>");
+            out.println(",Vhs: " + Vhs + "<br>");
+            out.println(",Dvd: " + Dvd + "<br>");
+        }
+        out.println("</body></html>");
+
+        // Clean-up environment
+        rs.close();
+        stmt.close();
+        conn.close();
     }
+    catch(SQLException se
+
+    
+        ) {
+         //Handle errors for JDBC
+         se.printStackTrace();
+    }
+    catch(Exception e
+
+    
+        ) {
+         //Handle errors for Class.forName
+         e.printStackTrace();
+    }
+
+    
+        finally {
+        //finally block used to close resources
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } //end finally try
+    } //end try
+
+}
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -88,7 +199,7 @@ public class Equipo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         a = request.getParameter("inputProfesor");
@@ -99,7 +210,33 @@ public class Equipo extends HttpServlet {
         f = request.getParameter("inputGrupo");
         g = request.getParameter("inputSalon");
 
-        //        List<String> list = new ArrayList<String>();
+        try {
+        if (!request.getParameter("canon").isEmpty())
+            canon = 1;
+        else {canon = 0;}
+        if (!request.getParameter("extencion").isEmpty())
+            ext = 1;
+        else {ext = 0;}
+        if (!request.getParameter("hdmi").isEmpty())
+            hdmi = 1;
+        else {hdmi = 1;}
+        if (!request.getParameter("lcd").isEmpty())
+            lcd = 1;
+        else {lcd = 1;}
+        if (!request.getParameter("grabadora").isEmpty())
+            grab = 1;
+        else {grab = 0;}
+        if (!request.getParameter("tv").isEmpty())
+            tv = 1;
+        else {tv = 0;}
+        if (!request.getParameter("vhs").isEmpty())
+            vhs = 1;
+        else {vhs = 0;}
+        if (!request.getParameter("dvd").isEmpty())
+            dvd = 1;
+        else {dvd = 0;}       
+        }catch(NullPointerException e) { };
+        
 //
 //        Enumeration nombresParams = request.getParameterNames();
 //        while (nombresParams.hasMoreElements()) {
@@ -115,19 +252,22 @@ public class Equipo extends HttpServlet {
 
             //Class.forName("net.sourceforge.jtds.jdbc.Driver");
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bilblioteca?user=" + user + "&pasword=" + password);
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca?user=" + user + "&pasword=" + password);
 
-            
-            String query = String.format("INSERT INTO bilblioteca.solicitudes"
-                    + "(NombreProfesor, NombreAlumnos, Matricula, Plantel, Carrera, Grupo, Salon) "
-                    + "VALUES ('" + a + " ', '" + b + "', '" + c + "', '" + d + "', '" + e + "', '" + f + "', '" + g + "')");
+            String query = String.format("INSERT INTO biblioteca.pedidos"
+                    + "(NombreProfesor, NombreAlumnos, Matricula, Plantel, Carrera, Grupo, Salon, Canon, Extencion, Hdmi, Lcd, Grabadora, Tv, Vhs, Dvd) "
+                    + "VALUES ('" + a + " ', '" + b + "', '" + c + "', '" + d + "', '" + e + "', '" + f + "', "
+                            + "'" + g + "', '" + canon + "', '" + ext +"', '" + hdmi +"', '" +lcd+"', '"+grab+"', '" +tv+"', '"+vhs+"','"+dvd+"')");
             //processRequest(request, response);
             PreparedStatement st = conn.prepareStatement(query);
             st.execute();
             conn.close();
-            
-        } catch (SQLException | ClassNotFoundException se) {
-            Logger.getLogger(Connec.class.getName()).log(Level.SEVERE, null, se);
+
+        
+
+} catch (SQLException | ClassNotFoundException se) {
+            Logger.getLogger(Connec.class
+.getName()).log(Level.SEVERE, null, se);
         }
 
     }
@@ -138,7 +278,7 @@ public class Equipo extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
